@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         //TODO: Fix bugs:
         //TODO: Bug 1. Click on symbols without numbers crashes the app (look at how double it is initialized to know if it has a value or not)
         //TODO: Bug 2. Click on equal without numbers crashes the app (Find if mFirst and/or mSecond have a value, depends on operation; ex: 10Raised to X only requires mFirst)
+        //TODO: Bug 3. When I write and there's text on operationNumbers from the last operation, implement setText to make the field empty again
         //TODO: Add @onPause at least to store the values in the operationNumbers text and the histories when @onPause
         //TODO: Change theme light to dark and viceversa on onClick
         //TODO: Add superscript to 10RaisedToX result
