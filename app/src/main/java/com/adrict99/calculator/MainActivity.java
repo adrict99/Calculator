@@ -106,42 +106,49 @@ public class MainActivity extends AppCompatActivity {
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
                         Double resultPlus = mFirst + mSecond;
                         operationNumbers.setText(resultPlus.toString());
+                        historyTwo.setText(historyOne.getText());
                         historyOne.setText(mFirst + " " + "+" + " " + mSecond + " = " + resultPlus);
                         break;
                     case "Minus" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
                         Double resultMinus = mFirst - mSecond;
                         operationNumbers.setText(resultMinus.toString());
+                        historyTwo.setText(historyOne.getText());
                         historyOne.setText(mFirst + " " + "-" + " " + mSecond + " = " + resultMinus);
                         break;
                     case "Times" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
                         Double resultTimes = mFirst * mSecond;
                         operationNumbers.setText(resultTimes.toString());
+                        historyTwo.setText(historyOne.getText());
                         historyOne.setText(mFirst + " " + "*" + " " + mSecond + " = " + resultTimes);
                         break;
                     case "Div" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
                         Double resultDiv = mFirst / mSecond;
                         operationNumbers.setText(resultDiv.toString());
+                        historyTwo.setText(historyOne.getText());
                         historyOne.setText(mFirst + " " + "/" + " " + mSecond + " = " + resultDiv);
                         break;
                     case "Percentage" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
                         Double resultPercentage = (mFirst / 100) * mSecond;
                         operationNumbers.setText(resultPercentage.toString());
+                        historyTwo.setText(historyOne.getText());
                         historyOne.setText(mFirst + " " + "%" + " " + mSecond + " = " + resultPercentage);
                         break;
                     case "Raise" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
                         double resultRaise = Math.pow(mFirst, mSecond);
                         operationNumbers.setText(String.valueOf(resultRaise));
+                        historyTwo.setText(historyOne.getText());
                         historyOne.setText(mFirst + " " + "ₓⁿ" + " " + mSecond + " = " + resultRaise);
                         break;
                     case "SquareR" :
                         double resultSquareR = Math.sqrt(mFirst);
                         String res = String.valueOf(resultSquareR);
                         operationNumbers.setText(res);
+                        historyTwo.setText(historyOne.getText());
                         historyOne.setText(mFirst + " " + "ⁿ√ₓ" + " = " + resultSquareR);
                         break;
                 }
