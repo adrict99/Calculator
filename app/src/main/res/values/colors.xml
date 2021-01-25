@@ -8,5 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
     <color name="bluemidtrans">#830059F3</color>
-    <color name="bluelight">#FF3765D8</color>
+    <color name="StrongButton">#FF1550E6</color>
+    <color name="LightButton">#FF3765D8</color>
 </resources>

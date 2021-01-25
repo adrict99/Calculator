@@ -20,5 +20,9 @@
     <string name="equal">=</string>
     <string name="comma">.</string>
     <string name="elev">ₓⁿ</string>
+    <string name="pi">𝜋</string>
+    <string name="onexof">1/x</string>
+    <string name="tenraisedto">10ⁿ</string>
+    <string name="moreless">+-</string>
     <string name="operation_hint">Enter some numbers!</string>
 </resources>
