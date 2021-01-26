@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
     double mFirst;
     double mSecond;
-
     String operation;
 
     @Override
