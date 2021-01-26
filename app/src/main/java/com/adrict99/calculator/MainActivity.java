@@ -7,6 +7,7 @@ import android.text.InputType;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.Math;
 
@@ -49,12 +50,19 @@ public class MainActivity extends AppCompatActivity {
         final TextView historyOne = findViewById(R.id.historyTextView);
         final TextView historyTwo = findViewById(R.id.history2TextView);
         final TextView historyThree = findViewById(R.id.history3TextView);
+        final TextView liveOperations = findViewById(R.id.liveTextView);
         final EditText operationNumbers = findViewById(R.id.resultEditText);
 
         operationNumbers.setInputType(InputType.TYPE_NULL);
 
-        btn1.setOnClickListener(v -> operationNumbers.setText(operationNumbers.getText() + "1"));
-        btn2.setOnClickListener(v -> operationNumbers.setText(operationNumbers.getText() + "2"));
+        btn1.setOnClickListener(v -> {
+          operationNumbers.setText(operationNumbers.getText() + "1");
+//          liveOperations.setText(operationNumbers.getText());
+       });
+        btn2.setOnClickListener(v -> {
+            operationNumbers.setText(operationNumbers.getText() + "2");
+//            setLiveOperations(liveOperations, operationNumbers);
+        });
         btn3.setOnClickListener(v -> operationNumbers.setText(operationNumbers.getText() + "3"));
         btn4.setOnClickListener(v -> operationNumbers.setText(operationNumbers.getText() + "4"));
         btn5.setOnClickListener(v -> operationNumbers.setText(operationNumbers.getText() + "5"));
@@ -66,66 +74,117 @@ public class MainActivity extends AppCompatActivity {
         btnComma.setOnClickListener(v -> operationNumbers.setText(operationNumbers.getText() + "."));
         buttonPi.setOnClickListener(v -> operationNumbers.setText(operationNumbers.getText() + "3.141592"));
         buttonMoreLess.setOnClickListener(v -> {
-            double converter = Double.parseDouble(String.valueOf(operationNumbers.getText())) * -1;
-            operationNumbers.setText(String.valueOf(converter));
+            try {
+                double converter = Double.parseDouble(String.valueOf(operationNumbers.getText())) * -1;
+                operationNumbers.setText(String.valueOf(converter));
+            } catch (Exception e) {
+                Toast.makeText(this, "You must enter some numbers...", Toast.LENGTH_SHORT).show();
+                operationNumbers.setText(null);
+            }
         });
         btnCE.setOnClickListener(v -> {
             operationNumbers.setText("");
         });
         //TODO: Fix bugs:
-        //TODO: Bug 1. Click on symbols without numbers crashes the app (look at how double it is initialized to know if it has a value or not)
-        //TODO: Bug 2. Click on equal without numbers crashes the app (Find if mFirst and/or mSecond have a value, depends on operation; ex: 10Raised to X only requires mFirst)
-        //TODO: Bug 3. When I write and there's text on operationNumbers from the last operation, implement setText to make the field empty again
-        //TODO: Bug 4. The roots button does Square roots, not Y root of X
-        //TODO: Add @onPause at least to store the values in the operationNumbers text and the histories when @onPause
+        //TODO: Bug 1. Check history method to see how it is working in detail
+        //TODO: Bug 2. Implement repetitive functions on methods
+        //TODO: Bug 3. Finish liveOperations method implementation
+        //TODO: Bug 4. Make prints in the history shorter, there are spaces that must be included with the symbol
+        //TODO: Add @onPause at least to store the values in the operationNumbers text and the histories when @onPause tutorial curso 1
         //TODO: Change theme light to dark and viceversa on onClick
         //TODO: Add superscript to 10RaisedToX result
         buttonPlus.setOnClickListener(v -> {
-            mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
-            operation = "Plus";
-            operationNumbers.setText(null);
+            try {
+                mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
+                operation = "Plus";
+                operationNumbers.setText(null);
+            }catch (Exception e) {
+                Toast.makeText(this, "You must enter some numbers...", Toast.LENGTH_SHORT).show();
+                operationNumbers.setText(null);
+            }
         });
         buttonMinus.setOnClickListener(v -> {
-            mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
-            operation = "Minus";
-            operationNumbers.setText(null);
+            try {
+                mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
+                operation = "Minus";
+                operationNumbers.setText(null);
+            } catch (Exception e) {
+                Toast.makeText(this, "You must enter some numbers...", Toast.LENGTH_SHORT).show();
+                operationNumbers.setText(null);
+            }
         });
         buttonTimes.setOnClickListener(v -> {
-            mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
-            operation = "Times";
-            operationNumbers.setText(null);
+            try {
+                mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
+                operation = "Times";
+                operationNumbers.setText(null);
+            } catch (Exception e) {
+                Toast.makeText(this, "You must enter some numbers...", Toast.LENGTH_SHORT).show();
+                operationNumbers.setText(null);
+            }
         });
         buttonDiv.setOnClickListener(v -> {
-            mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
-            operation = "Div";
-            operationNumbers.setText(null);
+            try {
+                mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
+                operation = "Div";
+                operationNumbers.setText(null);
+            } catch (Exception e) {
+                Toast.makeText(this, "You must enter some numbers...", Toast.LENGTH_SHORT).show();
+                operationNumbers.setText(null);
+            }
         });
         buttonPercentage.setOnClickListener(v -> {
-            mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
-            operation = "Percentage";
-            operationNumbers.setText(null);
+            try {
+                mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
+                operation = "Percentage";
+                operationNumbers.setText(null);
+            } catch (Exception e) {
+                Toast.makeText(this, "You must enter some numbers...", Toast.LENGTH_SHORT).show();
+                operationNumbers.setText(null);
+            }
         });
         buttonRaise.setOnClickListener(v -> {
-            mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
-            operation = "Raise";
-            operationNumbers.setText(null);
+            try {
+                mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
+                operation = "Raise";
+                operationNumbers.setText(null);
+            } catch (Exception e) {
+                Toast.makeText(this, "You must enter some numbers...", Toast.LENGTH_SHORT).show();
+                operationNumbers.setText(null);
+            }
         });
         buttonSquareRoot.setOnClickListener(v -> {
-            mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
-            operation = "SquareR";
-            operationNumbers.setText(null);
+            try {
+                mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
+                operation = "Root";
+                operationNumbers.setText(null);
+            } catch (Exception e) {
+                Toast.makeText(this, "You must enter some numbers...", Toast.LENGTH_SHORT).show();
+                operationNumbers.setText(null);
+            }
         });
         buttonOneXof.setOnClickListener(v -> {
-            mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
-            operation = "OneXof";
-            operationNumbers.setText(null);
+            try {
+                mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
+                operation = "OneXof";
+                operationNumbers.setText(null);
+            } catch (Exception e) {
+                Toast.makeText(this, "You must enter some numbers...", Toast.LENGTH_SHORT).show();
+                operationNumbers.setText(null);
+            }
         });
         buttonTenRaisedTo.setOnClickListener(v -> {
-            mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
-            operation = "TenRaisedTo";
-            operationNumbers.setText(null);
+            try {
+                mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
+                operation = "TenRaisedTo";
+                operationNumbers.setText(null);
+            } catch (Exception e) {
+                Toast.makeText(this, "You must enter some numbers...", Toast.LENGTH_SHORT).show();
+                operationNumbers.setText(null);
+            }
         });
         buttonEqual.setOnClickListener(v -> {
+            try {
                 switch (operation){
                     case "Plus" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
@@ -157,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
                         operationNumbers.setText(resultDiv.toString());
                         historyThree.setText(historyTwo.getText());
                         historyTwo.setText(historyOne.getText());
-                        historyOne.setText(mFirst + " " + "/" + " " + mSecond + " = " + resultDiv);
+                        historyOne.setText(mFirst + " / " + mSecond + " = " + resultDiv);
                         break;
                     case "Percentage" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
@@ -165,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
                         operationNumbers.setText(resultPercentage.toString());
                         historyThree.setText(historyTwo.getText());
                         historyTwo.setText(historyOne.getText());
-                        historyOne.setText(mFirst + " " + "%" + " " + mSecond + " = " + resultPercentage);
+                        historyOne.setText(mFirst + " % " + mSecond + " = " + resultPercentage);
                         break;
                     case "Raise" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
@@ -173,14 +232,15 @@ public class MainActivity extends AppCompatActivity {
                         operationNumbers.setText(String.valueOf(resultRaise));
                         historyThree.setText(historyTwo.getText());
                         historyTwo.setText(historyOne.getText());
-                        historyOne.setText(mFirst + " " + "ₓⁿ" + " " + mSecond + " = " + resultRaise);
+                        historyOne.setText(mFirst + " " + " raised to " + " " + mSecond + " = " + resultRaise);
                         break;
-                    case "SquareR" :
-                        double resultSquareR = Math.sqrt(mFirst);
-                        operationNumbers.setText(String.valueOf(resultSquareR));
+                    case "Root" :
+                        mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
+                        double resultRoot = Math.pow(mFirst, (1/mSecond));
+                        operationNumbers.setText(String.valueOf(resultRoot));
                         historyThree.setText(historyTwo.getText());
                         historyTwo.setText(historyOne.getText());
-                        historyOne.setText(mFirst + " " + "ⁿ√ₓ" + " = " + resultSquareR);
+                        historyOne.setText(mFirst + " ⁿ√ₓ " + mSecond + " = " + resultRoot);
                         break;
                     case "OneXof" :
                         double resultOneXof = 1 / mFirst;
@@ -194,9 +254,21 @@ public class MainActivity extends AppCompatActivity {
                         operationNumbers.setText(String.valueOf(resultTenRaisedTo));
                         historyThree.setText(historyTwo.getText());
                         historyTwo.setText(historyOne.getText());
-                        historyOne.setText("10" + " raised to " + mFirst + " = " + resultTenRaisedTo);
+                        historyOne.setText( mFirst + " raised to " + mSecond + " = " + resultTenRaisedTo);
                         break;
                 }
+            }  catch (Exception e) {
+                Toast.makeText(this, "You must enter valid numbers...", Toast.LENGTH_SHORT).show();
+                operationNumbers.setText(null);
+            }
         });
     }
+//    public static void setLiveOperations(TextView liveOperations, EditText operationNumbers){
+//        liveOperations.setText(operationNumbers.getText());
+//    }
+//    public static void setHistoryOperations(TextView historyOne, TextView historyTwo, TextView historyThree, String historyText){
+//        historyThree.setText(historyTwo.getText());
+//        historyTwo.setText(historyOne.getText());
+//        historyOne.setText(historyText);
+//    }
 }
