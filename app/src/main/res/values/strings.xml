@@ -25,4 +25,6 @@
     <string name="tenraisedto">10ⁿ</string>
     <string name="moreless">+-</string>
     <string name="operation_hint">Enter some numbers!</string>
+    <string name="darkStyle">Dark</string>
+    <string name="lightStyle">Light</string>
 </resources>

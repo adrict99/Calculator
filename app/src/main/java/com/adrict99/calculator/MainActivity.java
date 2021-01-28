@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         final TextView historyOne = findViewById(R.id.historyTextView);
         final TextView historyTwo = findViewById(R.id.history2TextView);
         final TextView historyThree = findViewById(R.id.history3TextView);
-//        final TextView liveOperations = findViewById(R.id.liveTextView);
         final EditText operationNumbers = findViewById(R.id.resultEditText);
 
         operationNumbers.setInputType(InputType.TYPE_NULL);
