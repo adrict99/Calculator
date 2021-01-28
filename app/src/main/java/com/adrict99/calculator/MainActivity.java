@@ -188,72 +188,90 @@ public class MainActivity extends AppCompatActivity {
                     case "Plus" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
                         Double resultPlus = mFirst + mSecond;
-                        operationNumbers.setText(resultPlus.toString());
-                        historyThree.setText(historyTwo.getText());
-                        historyTwo.setText(historyOne.getText());
-                        historyOne.setText(mFirst + " " + "+" + " " + mSecond + " = " + resultPlus);
+                        String textPlus = mFirst + " " + "+" + " " + mSecond + " = " + resultPlus;
+                        setHistoryOperations(historyOne, historyTwo, historyThree, textPlus, resultPlus, operationNumbers);
+//                        operationNumbers.setText(resultPlus.toString());
+//                        historyThree.setText(historyTwo.getText());
+//                        historyTwo.setText(historyOne.getText());
+//                        historyOne.setText(mFirst + " " + "+" + " " + mSecond + " = " + resultPlus);
                         break;
                     case "Minus" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
                         Double resultMinus = mFirst - mSecond;
-                        operationNumbers.setText(resultMinus.toString());
-                        historyThree.setText(historyTwo.getText());
-                        historyTwo.setText(historyOne.getText());
-                        historyOne.setText(mFirst + " " + "-" + " " + mSecond + " = " + resultMinus);
+                        String textMinus = mFirst + " " + "-" + " " + mSecond + " = " + resultMinus;
+                        setHistoryOperations(historyOne, historyTwo, historyThree, textMinus, resultMinus, operationNumbers);
+//                        operationNumbers.setText(resultMinus.toString());
+//                        historyThree.setText(historyTwo.getText());
+//                        historyTwo.setText(historyOne.getText());
+//                        historyOne.setText(mFirst + " " + "-" + " " + mSecond + " = " + resultMinus);
                         break;
                     case "Times" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
                         Double resultTimes = mFirst * mSecond;
-                        operationNumbers.setText(resultTimes.toString());
-                        historyThree.setText(historyTwo.getText());
-                        historyTwo.setText(historyOne.getText());
-                        historyOne.setText(mFirst + " " + "*" + " " + mSecond + " = " + resultTimes);
+                        String textTimes = mFirst + " " + "*" + " " + mSecond + " = " + resultTimes;
+                        setHistoryOperations(historyOne, historyTwo, historyThree, textTimes, resultTimes, operationNumbers);
+//                        operationNumbers.setText(resultTimes.toString());
+//                        historyThree.setText(historyTwo.getText());
+//                        historyTwo.setText(historyOne.getText());
+//                        historyOne.setText(mFirst + " " + "*" + " " + mSecond + " = " + resultTimes);
                         break;
                     case "Div" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
                         Double resultDiv = mFirst / mSecond;
-                        operationNumbers.setText(resultDiv.toString());
-                        historyThree.setText(historyTwo.getText());
-                        historyTwo.setText(historyOne.getText());
-                        historyOne.setText(mFirst + " / " + mSecond + " = " + resultDiv);
+                        String textDiv = mFirst + " / " + mSecond + " = " + resultDiv;
+                        setHistoryOperations(historyOne, historyTwo, historyThree, textDiv, resultDiv, operationNumbers);
+//                        operationNumbers.setText(resultDiv.toString());
+//                        historyThree.setText(historyTwo.getText());
+//                        historyTwo.setText(historyOne.getText());
+//                        historyOne.setText(mFirst + " / " + mSecond + " = " + resultDiv);
                         break;
                     case "Percentage" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
                         Double resultPercentage = (mFirst / 100) * mSecond;
-                        operationNumbers.setText(resultPercentage.toString());
-                        historyThree.setText(historyTwo.getText());
-                        historyTwo.setText(historyOne.getText());
-                        historyOne.setText(mFirst + " % " + mSecond + " = " + resultPercentage);
+                        String textPercentage = mFirst + " % " + mSecond + " = " + resultPercentage;
+                        setHistoryOperations(historyOne, historyTwo, historyThree, textPercentage, resultPercentage, operationNumbers);
+//                        operationNumbers.setText(resultPercentage.toString());
+//                        historyThree.setText(historyTwo.getText());
+//                        historyTwo.setText(historyOne.getText());
+//                        historyOne.setText(mFirst + " % " + mSecond + " = " + resultPercentage);
                         break;
                     case "Raise" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
                         double resultRaise = Math.pow(mFirst, mSecond);
-                        operationNumbers.setText(String.valueOf(resultRaise));
-                        historyThree.setText(historyTwo.getText());
-                        historyTwo.setText(historyOne.getText());
-                        historyOne.setText(mFirst + " " + " raised to " + " " + mSecond + " = " + resultRaise);
+                        String textRaise = mFirst + " " + " raised to " + " " + mSecond + " = " + resultRaise;
+                        setHistoryOperations(historyOne, historyTwo, historyThree, textRaise, resultRaise, operationNumbers);
+//                        operationNumbers.setText(String.valueOf(resultRaise));
+//                        historyThree.setText(historyTwo.getText());
+//                        historyTwo.setText(historyOne.getText());
+//                        historyOne.setText(mFirst + " " + " raised to " + " " + mSecond + " = " + resultRaise);
                         break;
                     case "Root" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
                         double resultRoot = Math.pow(mFirst, (1/mSecond));
-                        operationNumbers.setText(String.valueOf(resultRoot));
-                        historyThree.setText(historyTwo.getText());
-                        historyTwo.setText(historyOne.getText());
-                        historyOne.setText(mFirst + " ⁿ√ₓ " + mSecond + " = " + resultRoot);
+                        String textRoot = mFirst + " ⁿ√ₓ " + mSecond + " = " + resultRoot;
+                        setHistoryOperations(historyOne, historyTwo, historyThree, textRoot, resultRoot, operationNumbers);
+//                        operationNumbers.setText(String.valueOf(resultRoot));
+//                        historyThree.setText(historyTwo.getText());
+//                        historyTwo.setText(historyOne.getText());
+//                        historyOne.setText(mFirst + " ⁿ√ₓ " + mSecond + " = " + resultRoot);
                         break;
                     case "OneXof" :
                         double resultOneXof = 1 / mFirst;
-                        operationNumbers.setText(String.valueOf(resultOneXof));
-                        historyThree.setText(historyTwo.getText());
-                        historyTwo.setText(historyOne.getText());
-                        historyOne.setText("1/" + mFirst + " = " + resultOneXof);
+                        String textOneXof = "1/" + mFirst + " = " + resultOneXof;
+                        setHistoryOperations(historyOne, historyTwo, historyThree, textOneXof, resultOneXof, operationNumbers);
+//                        operationNumbers.setText(String.valueOf(resultOneXof));
+//                        historyThree.setText(historyTwo.getText());
+//                        historyTwo.setText(historyOne.getText());
+//                        historyOne.setText("1/" + mFirst + " = " + resultOneXof);
                         break;
                     case "TenRaisedTo" :
                         double resultTenRaisedTo = Math.pow(10,mFirst);
-                        operationNumbers.setText(String.valueOf(resultTenRaisedTo));
-                        historyThree.setText(historyTwo.getText());
-                        historyTwo.setText(historyOne.getText());
-                        historyOne.setText( mFirst + " raised to " + mSecond + " = " + resultTenRaisedTo);
+                        String textTenRaisedTo = "10 raised to " + mFirst + " = " + resultTenRaisedTo;
+                        setHistoryOperations(historyOne, historyTwo, historyThree, textTenRaisedTo, resultTenRaisedTo, operationNumbers);
+//                        operationNumbers.setText(String.valueOf(resultTenRaisedTo));
+//                        historyThree.setText(historyTwo.getText());
+//                        historyTwo.setText(historyOne.getText());
+//                        historyOne.setText(mFirst + " raised to " + mSecond + " = " + resultTenRaisedTo);
                         break;
                 }
             }  catch (Exception e) {
@@ -265,9 +283,10 @@ public class MainActivity extends AppCompatActivity {
 //    public static void setLiveOperations(TextView liveOperations, EditText operationNumbers){
 //        liveOperations.setText(operationNumbers.getText());
 //    }
-//    public static void setHistoryOperations(TextView historyOne, TextView historyTwo, TextView historyThree, String historyText){
-//        historyThree.setText(historyTwo.getText());
-//        historyTwo.setText(historyOne.getText());
-//        historyOne.setText(historyText);
-//    }
+    public static void setHistoryOperations(TextView historyOne, TextView historyTwo, TextView historyThree, String historyText, double result, EditText operationNumbers){
+        operationNumbers.setText(String.valueOf(result));
+        historyThree.setText(historyTwo.getText());
+        historyTwo.setText(historyOne.getText());
+        historyOne.setText(historyText);
+    }
 }
