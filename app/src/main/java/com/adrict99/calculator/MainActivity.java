@@ -2,6 +2,7 @@ package com.adrict99.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.InputType;
 import android.widget.Button;
@@ -11,12 +12,18 @@ import android.widget.Toast;
 
 import java.lang.Math;
 
+//TODO: Bug 1. Pseudocode liveOperations function
+//TODO: Add @onPause at least to store the values in the operationNumbers text and the histories when @onPause
+//TODO: Change theme light to dark and viceversa on onClick
+//TODO: Add superscript to 10RaisedToX result
+
 public class MainActivity extends AppCompatActivity {
 
     double mFirst;
     double mSecond;
     String operation;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,19 +56,13 @@ public class MainActivity extends AppCompatActivity {
         final TextView historyOne = findViewById(R.id.historyTextView);
         final TextView historyTwo = findViewById(R.id.history2TextView);
         final TextView historyThree = findViewById(R.id.history3TextView);
-        final TextView liveOperations = findViewById(R.id.liveTextView);
+//        final TextView liveOperations = findViewById(R.id.liveTextView);
         final EditText operationNumbers = findViewById(R.id.resultEditText);
 
         operationNumbers.setInputType(InputType.TYPE_NULL);
 
-        btn1.setOnClickListener(v -> {
-          operationNumbers.setText(operationNumbers.getText() + "1");
-//          liveOperations.setText(operationNumbers.getText());
-       });
-        btn2.setOnClickListener(v -> {
-            operationNumbers.setText(operationNumbers.getText() + "2");
-//            setLiveOperations(liveOperations, operationNumbers);
-        });
+        btn1.setOnClickListener(v -> operationNumbers.setText(operationNumbers.getText() + "1"));
+        btn2.setOnClickListener(v -> operationNumbers.setText(operationNumbers.getText() + "2"));
         btn3.setOnClickListener(v -> operationNumbers.setText(operationNumbers.getText() + "3"));
         btn4.setOnClickListener(v -> operationNumbers.setText(operationNumbers.getText() + "4"));
         btn5.setOnClickListener(v -> operationNumbers.setText(operationNumbers.getText() + "5"));
@@ -72,26 +73,17 @@ public class MainActivity extends AppCompatActivity {
         btn0.setOnClickListener(v -> operationNumbers.setText(operationNumbers.getText() + "0"));
         btnComma.setOnClickListener(v -> operationNumbers.setText(operationNumbers.getText() + "."));
         buttonPi.setOnClickListener(v -> operationNumbers.setText(operationNumbers.getText() + "3.141592"));
+        btnCE.setOnClickListener(v -> operationNumbers.setText(""));
         buttonMoreLess.setOnClickListener(v -> {
             try {
                 double converter = Double.parseDouble(String.valueOf(operationNumbers.getText())) * -1;
                 operationNumbers.setText(String.valueOf(converter));
             } catch (Exception e) {
-                Toast.makeText(this, "You must enter some numbers...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "You must enter some numbers...", Toast.LENGTH_SHORT).show();
                 operationNumbers.setText(null);
             }
         });
-        btnCE.setOnClickListener(v -> {
-            operationNumbers.setText("");
-        });
-        //TODO: Fix bugs:
-        //TODO: Bug 1. Check history method to see how it is working in detail
-        //TODO: Bug 2. Implement repetitive functions on methods
-        //TODO: Bug 3. Finish liveOperations method implementation
-        //TODO: Bug 4. Make prints in the history shorter, there are spaces that must be included with the symbol
-        //TODO: Add @onPause at least to store the values in the operationNumbers text and the histories when @onPause tutorial curso 1
-        //TODO: Change theme light to dark and viceversa on onClick
-        //TODO: Add superscript to 10RaisedToX result
+
         buttonPlus.setOnClickListener(v -> {
             try {
                 mFirst = Double.parseDouble(String.valueOf(operationNumbers.getText()));
@@ -187,91 +179,55 @@ public class MainActivity extends AppCompatActivity {
                 switch (operation){
                     case "Plus" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
-                        Double resultPlus = mFirst + mSecond;
-                        String textPlus = mFirst + " " + "+" + " " + mSecond + " = " + resultPlus;
-                        setHistoryOperations(historyOne, historyTwo, historyThree, textPlus, resultPlus, operationNumbers);
-//                        operationNumbers.setText(resultPlus.toString());
-//                        historyThree.setText(historyTwo.getText());
-//                        historyTwo.setText(historyOne.getText());
-//                        historyOne.setText(mFirst + " " + "+" + " " + mSecond + " = " + resultPlus);
+                        double resultPlus = mFirst + mSecond;
+                        String textPlus = mFirst + " + " + mSecond + " = " + resultPlus;
+                        OperationsHistory(historyOne, historyTwo, historyThree, textPlus, resultPlus, operationNumbers);
                         break;
                     case "Minus" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
-                        Double resultMinus = mFirst - mSecond;
-                        String textMinus = mFirst + " " + "-" + " " + mSecond + " = " + resultMinus;
-                        setHistoryOperations(historyOne, historyTwo, historyThree, textMinus, resultMinus, operationNumbers);
-//                        operationNumbers.setText(resultMinus.toString());
-//                        historyThree.setText(historyTwo.getText());
-//                        historyTwo.setText(historyOne.getText());
-//                        historyOne.setText(mFirst + " " + "-" + " " + mSecond + " = " + resultMinus);
+                        double resultMinus = mFirst - mSecond;
+                        String textMinus = mFirst + " - " + mSecond + " = " + resultMinus;
+                        OperationsHistory(historyOne, historyTwo, historyThree, textMinus, resultMinus, operationNumbers);
                         break;
                     case "Times" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
-                        Double resultTimes = mFirst * mSecond;
-                        String textTimes = mFirst + " " + "*" + " " + mSecond + " = " + resultTimes;
-                        setHistoryOperations(historyOne, historyTwo, historyThree, textTimes, resultTimes, operationNumbers);
-//                        operationNumbers.setText(resultTimes.toString());
-//                        historyThree.setText(historyTwo.getText());
-//                        historyTwo.setText(historyOne.getText());
-//                        historyOne.setText(mFirst + " " + "*" + " " + mSecond + " = " + resultTimes);
+                        double resultTimes = mFirst * mSecond;
+                        String textTimes = mFirst + " * " + mSecond + " = " + resultTimes;
+                        OperationsHistory(historyOne, historyTwo, historyThree, textTimes, resultTimes, operationNumbers);
                         break;
                     case "Div" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
-                        Double resultDiv = mFirst / mSecond;
+                        double resultDiv = mFirst / mSecond;
                         String textDiv = mFirst + " / " + mSecond + " = " + resultDiv;
-                        setHistoryOperations(historyOne, historyTwo, historyThree, textDiv, resultDiv, operationNumbers);
-//                        operationNumbers.setText(resultDiv.toString());
-//                        historyThree.setText(historyTwo.getText());
-//                        historyTwo.setText(historyOne.getText());
-//                        historyOne.setText(mFirst + " / " + mSecond + " = " + resultDiv);
+                        OperationsHistory(historyOne, historyTwo, historyThree, textDiv, resultDiv, operationNumbers);
                         break;
                     case "Percentage" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
-                        Double resultPercentage = (mFirst / 100) * mSecond;
-                        String textPercentage = mFirst + " % " + mSecond + " = " + resultPercentage;
-                        setHistoryOperations(historyOne, historyTwo, historyThree, textPercentage, resultPercentage, operationNumbers);
-//                        operationNumbers.setText(resultPercentage.toString());
-//                        historyThree.setText(historyTwo.getText());
-//                        historyTwo.setText(historyOne.getText());
-//                        historyOne.setText(mFirst + " % " + mSecond + " = " + resultPercentage);
+                        double resultPercentage = (mFirst / 100) * mSecond;
+                        String textPercentage = mFirst + " % of " + mSecond + " = " + resultPercentage;
+                        OperationsHistory(historyOne, historyTwo, historyThree, textPercentage, resultPercentage, operationNumbers);
                         break;
                     case "Raise" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
                         double resultRaise = Math.pow(mFirst, mSecond);
                         String textRaise = mFirst + " " + " raised to " + " " + mSecond + " = " + resultRaise;
-                        setHistoryOperations(historyOne, historyTwo, historyThree, textRaise, resultRaise, operationNumbers);
-//                        operationNumbers.setText(String.valueOf(resultRaise));
-//                        historyThree.setText(historyTwo.getText());
-//                        historyTwo.setText(historyOne.getText());
-//                        historyOne.setText(mFirst + " " + " raised to " + " " + mSecond + " = " + resultRaise);
+                        OperationsHistory(historyOne, historyTwo, historyThree, textRaise, resultRaise, operationNumbers);
                         break;
                     case "Root" :
                         mSecond = Double.parseDouble(String.valueOf(operationNumbers.getText()));
                         double resultRoot = Math.pow(mFirst, (1/mSecond));
-                        String textRoot = mFirst + " ⁿ√ₓ " + mSecond + " = " + resultRoot;
-                        setHistoryOperations(historyOne, historyTwo, historyThree, textRoot, resultRoot, operationNumbers);
-//                        operationNumbers.setText(String.valueOf(resultRoot));
-//                        historyThree.setText(historyTwo.getText());
-//                        historyTwo.setText(historyOne.getText());
-//                        historyOne.setText(mFirst + " ⁿ√ₓ " + mSecond + " = " + resultRoot);
+                        String textRoot = mFirst + " √ of " + mSecond + " = " + resultRoot;
+                        OperationsHistory(historyOne, historyTwo, historyThree, textRoot, resultRoot, operationNumbers);
                         break;
                     case "OneXof" :
                         double resultOneXof = 1 / mFirst;
-                        String textOneXof = "1/" + mFirst + " = " + resultOneXof;
-                        setHistoryOperations(historyOne, historyTwo, historyThree, textOneXof, resultOneXof, operationNumbers);
-//                        operationNumbers.setText(String.valueOf(resultOneXof));
-//                        historyThree.setText(historyTwo.getText());
-//                        historyTwo.setText(historyOne.getText());
-//                        historyOne.setText("1/" + mFirst + " = " + resultOneXof);
+                        String textOneXof = "1 / " + mFirst + " = " + resultOneXof;
+                        OperationsHistory(historyOne, historyTwo, historyThree, textOneXof, resultOneXof, operationNumbers);
                         break;
                     case "TenRaisedTo" :
                         double resultTenRaisedTo = Math.pow(10,mFirst);
                         String textTenRaisedTo = "10 raised to " + mFirst + " = " + resultTenRaisedTo;
-                        setHistoryOperations(historyOne, historyTwo, historyThree, textTenRaisedTo, resultTenRaisedTo, operationNumbers);
-//                        operationNumbers.setText(String.valueOf(resultTenRaisedTo));
-//                        historyThree.setText(historyTwo.getText());
-//                        historyTwo.setText(historyOne.getText());
-//                        historyOne.setText(mFirst + " raised to " + mSecond + " = " + resultTenRaisedTo);
+                        OperationsHistory(historyOne, historyTwo, historyThree, textTenRaisedTo, resultTenRaisedTo, operationNumbers);
                         break;
                 }
             }  catch (Exception e) {
@@ -280,10 +236,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-//    public static void setLiveOperations(TextView liveOperations, EditText operationNumbers){
-//        liveOperations.setText(operationNumbers.getText());
-//    }
-    public static void setHistoryOperations(TextView historyOne, TextView historyTwo, TextView historyThree, String historyText, double result, EditText operationNumbers){
+
+    public static void OperationsHistory(TextView historyOne, TextView historyTwo, TextView historyThree, String historyText, double result, EditText operationNumbers){
         operationNumbers.setText(String.valueOf(result));
         historyThree.setText(historyTwo.getText());
         historyTwo.setText(historyOne.getText());
