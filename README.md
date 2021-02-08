@@ -6,4 +6,6 @@
 - Includes operations history and you'll be able to reuse the number you've just calculated.
 - Eye-friendly & responsive interface
 
+### Image
+
 ![](https://github.com/adrict99/Calculator/blob/master/Screenshot_1611571851.png)
