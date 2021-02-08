@@ -5,3 +5,5 @@
 - Shortcuts to make a number negative, raise x times to 10, find the n root of x and much more.
 - Includes operations history and you'll be able to reuse the number you've just calculated.
 - Eye-friendly & responsive interface
+
+![](https://github.com/adrict99/Calculator/blob/master/Screenshot_1611571851.png)
