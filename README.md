@@ -1,4 +1,8 @@
 # Calculator
+
+Simple calculator project made to learn the basics about logic and UI in Android.
+"You have to take the first step even if you don't see the whole staircase".
+
 ### Features
 - Be able to calculate 7-digit figures.
 - Be able to perform addition, subtraction, multiplication, division, rooting and raising.
